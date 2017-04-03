@@ -13,7 +13,7 @@ Symphony Java API
 
         <dependency>
             <groupId>org.symphonyoss.symphony</groupId>
-            <artifactId>symphony-client</artifactId>
+            <artifactId>symphony-java-api</artifactId>
             <version>(Version)</version>
         </dependency>
 
@@ -47,7 +47,7 @@ Symphony Java API
 
 
 ##API Docs
-[API Documentation](http://symphonyoss.github.io/symphony-java-client/index.html)
+[API Documentation](http://symphonyoss.github.io/symphony-java-api/index.html)
 
 ## Contribute
 This project was initiated at [IHS Markit](https://www.ihsmarkit.com) and has been developed as open-source from the very beginning.
