@@ -64,7 +64,7 @@ env:
 addons:
   coverity_scan:
     project:
-      name: "symphonyoss/symphony-java-client"
+      name: "symphonyoss/symphony-java-api"
       description: "Build submitted via Travis CI"
     notification_email: dev-notify@symphony.foundation
     build_command_prepend: "mvn clean"
