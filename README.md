@@ -7,6 +7,11 @@
 Symphony Java API
 ====================
 
+(Generated Code)
+
+Implements REST API 1.45
+
+
 ##Requirements
 
 ####POM:
