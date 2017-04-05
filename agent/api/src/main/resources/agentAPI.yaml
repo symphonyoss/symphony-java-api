@@ -944,7 +944,7 @@ definitions:
       Also, the importing user must be a member of the conversation it is importing into.
       The user that the message is intended to have come from must also be present in the conversation.
       The intended message timestamp must be a valid time from the past. It cannot be a future timestamp.
-      By design, imported messages do not stream to the datafeed endpoint.
+      By design, imported messages do not stream to the datafeed endpoints.
     type: object
     properties:
       message:
@@ -993,7 +993,7 @@ definitions:
         Also, the importing user must be a member of the conversation it is importing into.
         The user that the message is intended to have come from must also be present in the conversation.
         The intended message timestamp must be a valid time from the past. It cannot be a future timestamp.
-        By design, imported messages do not stream to the datafeed endpoint.
+        By design, imported messages do not stream to the datafeed endpoints.
       type: object
       properties:
         message:
