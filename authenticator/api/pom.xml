@@ -20,47 +20,45 @@
   ~ under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>symphony-authenticator-api</artifactId>
-	<name>Symphony Authenticator Service API</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>symphony-authenticator-api</artifactId>
+    <name>Symphony Authenticator Service API</name>
 
-	<parent>
-		<groupId>org.symphonyoss.symphony</groupId>
-		<artifactId>symphony-authenticator</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.symphonyoss.symphony</groupId>
+        <artifactId>symphony-authenticator</artifactId>
+        <version>1.00.01-SNAPSHOT</version>
+    </parent>
 
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
-	<dependencies>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.zalando.maven.plugins</groupId>
-				<artifactId>swagger-codegen-maven-plugin</artifactId>
-				<version>${zalando.swagger.codegen.maven.plugin.version}</version>
-				<executions>
-					<execution>
-						<id>JSON to code Generation</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>codegen</goal>
-						</goals>
-						<configuration>
-							<apiFile>${basedir}/src/main/resources/authenticatorAPI.yaml</apiFile>
-							<language>html</language>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.zalando.maven.plugins</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>JSON to code Generation</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>codegen</goal>
+                        </goals>
+                        <configuration>
+                            <apiFile>${basedir}/src/main/resources/authenticatorAPI.yaml</apiFile>
+                            <language>html</language>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

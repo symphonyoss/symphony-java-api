@@ -20,129 +20,110 @@
   ~ under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>symphony-pod-java-jersey2-client</artifactId>
-	<name>Symphony POD Service Java Client</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>symphony-pod-java-jersey2-client</artifactId>
+    <name>Symphony POD Service Java Client</name>
 
-	<parent>
-		<groupId>org.symphonyoss.symphony</groupId>
-		<artifactId>symphony-pod</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.symphonyoss.symphony</groupId>
+        <artifactId>symphony-pod</artifactId>
+        <version>1.00.01-SNAPSHOT</version>
+    </parent>
 
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
-	<properties>
-		<spring-boot.version>1.3.2.RELEASE</spring-boot.version>
-        <jersey-version>2.12</jersey-version>
-        <jackson-version>2.4.2</jackson-version>
-        <jodatime-version>2.3</jodatime-version>
-
-	</properties>
-
-
-
-	<dependencies>
-
-<dependency>
-	<groupId>org.glassfish.jersey.media</groupId>
-	<artifactId>jersey-media-multipart</artifactId>
-	<version>${jersey.version}</version>
-</dependency>
-<dependency>
-	<groupId>org.glassfish.jersey.media</groupId>
-	<artifactId>jersey-media-json-jackson</artifactId>
-	<version>${jersey.version}</version>
-</dependency>
-<dependency>
-	<groupId>org.glassfish.jersey.core</groupId>
-	<artifactId>jersey-client</artifactId>
-	<version>${jersey.version}</version>
-</dependency>
-<dependency>
-	<groupId>javax.ws.rs</groupId>
-	<artifactId>javax.ws.rs-api</artifactId>
-	<version>2.0.1</version>
-</dependency>
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-core</artifactId>
-			<version>${swagger-core-version}</version>
-                        <scope>compile</scope>
-		</dependency>
-
-        <!-- Base64 encoding that works in both JVM and Android -->
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-core</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>joda-time</groupId>
+                    <artifactId>joda-time</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>com.brsanthu</groupId>
             <artifactId>migbase64</artifactId>
-            <version>2.2</version>
         </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.symphonyoss.symphony</groupId>
+                                    <artifactId>symphony-pod-api</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <outputDirectory>${project.build.directory}/generated-sources/api</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-
-
-
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>unpack</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>org.symphonyoss.symphony</groupId>
-									<artifactId>symphony-pod-api</artifactId>
-									<version>${project.version}</version>
-									<type>jar</type>
-									<outputDirectory>${project.build.directory}/generated-sources/api</outputDirectory>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-                                <!--
-				<groupId>org.zalando.maven.plugins</groupId>
-				<artifactId>swagger-codegen-maven-plugin</artifactId>
-				<version>${zalando.swagger.codegen.maven.plugin.version}</version>
-                                -->
-				<groupId>io.swagger</groupId>
-				<artifactId>swagger-codegen-maven-plugin</artifactId>
-				<version>${swagger.codegen.maven.plugin.version}</version>
-				<executions>
-					<execution>
-						<id>YAML to code Generation</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<inputSpec>${project.build.directory}/generated-sources/api/podAPI.yaml</inputSpec>
-							<apiPackage>org.symphonyoss.symphony.pod.api</apiPackage>
-							<modelPackage>org.symphonyoss.symphony.pod.model</modelPackage>
-							<invokerPackage>org.symphonyoss.symphony.pod.invoker</invokerPackage>
-							<language>java</language>
-                                                        <library>jersey2</library>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>YAML to code Generation</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.build.directory}/generated-sources/api/podAPI.yaml</inputSpec>
+                            <apiPackage>org.symphonyoss.symphony.pod.api</apiPackage>
+                            <modelPackage>org.symphonyoss.symphony.pod.model</modelPackage>
+                            <invokerPackage>org.symphonyoss.symphony.pod.invoker</invokerPackage>
+                            <language>java</language>
+                            <library>jersey2</library>
+                            <configOptions>
+                                <dateLibrary>java8</dateLibrary>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
