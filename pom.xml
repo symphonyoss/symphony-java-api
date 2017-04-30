@@ -94,21 +94,11 @@
     <properties>
         <jersey.version>2.23.1</jersey.version>
         <jackson.version>2.8.4</jackson.version>
-        <swagger-core-version>1.5.9</swagger-core-version>
-
-        <zalando.swagger.codegen.maven.plugin.version>0.4.28</zalando.swagger.codegen.maven.plugin.version>
-        <zalando.swagger.codegen.templates.version>0.4.28</zalando.swagger.codegen.templates.version>
-
-        <maven.compiler.plugin.version>3.6.1</maven.compiler.plugin.version>
-        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
-        <maven.resources.plugin.version>2.7</maven.resources.plugin.version>
-
         <sonar.skip>true</sonar.skip>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>org.glassfish.jersey.media</groupId>
                 <artifactId>jersey-media-multipart</artifactId>
@@ -130,21 +120,20 @@
                 <version>${jackson.version}</version>
             </dependency>
             <dependency>
-                <groupId>javax.ws.rs</groupId>
-                <artifactId>javax.ws.rs-api</artifactId>
-                <version>2.0.1</version>
-            </dependency>
-            <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-core</artifactId>
-                <version>${swagger-core-version}</version>
+                <version>1.5.9</version>
             </dependency>
-
             <!-- Base64 encoding that works in both JVM and Android -->
             <dependency>
                 <groupId>com.brsanthu</groupId>
                 <artifactId>migbase64</artifactId>
                 <version>2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -153,40 +142,18 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.zalando.maven.plugins</groupId>
+                    <groupId>io.swagger</groupId>
                     <artifactId>swagger-codegen-maven-plugin</artifactId>
-                    <version>${zalando.swagger.codegen.maven.plugin.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.zalando.stups</groupId>
-                            <artifactId>swagger-codegen-template-spring-interfaces</artifactId>
-                            <version>${zalando.swagger.codegen.templates.version}</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.zalando.stups</groupId>
-                            <artifactId>swagger-codegen-template-jaxrs-interfaces</artifactId>
-                            <version>${zalando.swagger.codegen.templates.version}</version>
-                        </dependency>
-                    </dependencies>
+                    <version>2.2.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven.compiler.plugin.version}</version>
+                    <version>3.6.1</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${maven.deploy.plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>${maven.resources.plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
