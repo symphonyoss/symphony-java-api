@@ -28,7 +28,7 @@ script:
 # Build for PRs
 - "if [[ \"$TRAVIS_PULL_REQUEST\" != \"false\" ]]; then mvn clean install && true ; fi"
 # Build for master branch
-- "if [[ $TRAVIS_BRANCH =~ master && \"$TRAVIS_PULL_REQUEST\" = \"false\" ]]; then mvn clean deploy -Pversioneye --settings settings.xml ; fi"
+- "if [[ $TRAVIS_BRANCH =~ master && \"$TRAVIS_PULL_REQUEST\" = \"false\" ]]; then mvn clean deploy -Pversioneye,sonar --settings settings.xml ; fi"
 
 jdk:
   - oraclejdk8
@@ -45,7 +45,7 @@ env:
    # Generated using command "travis encrypt COVERITY_SCAN_TOKEN=blah"
    - secure: "aaTDaHAcwcPyzkXwUbY0eNwotoNtuV5BUSmaymYB8NK8n7bUfUKOIAr0LSx5ra9JHks99EAIF3UaEnk7Nr3NrCzXvGqOxFxGd9MqDpE4JdISfVdUn1S6E9PtDOcKs/RtxFjeZj1jYn3weFOyjtdDVep0H0bifKM6yQbdXY5pzFpdLEb0gTK9n4due16MLhB62Pw69PDdqSp3R/np+TAWQcLRucJts6JqMIyjJl4ydwymEJNupoKOgA+lg4K2c+xS/4/I4rF/M0VCcn9Ocq3WgsYuW48fyq16ZiMZRhw4IDMxYUFjpLNUj15v6ICkfLEof7DJ1OnnBRUdGCJ56D+ghleSGX0CT97UfbhXbLKxna4+zlktdF3Oe2ReD0yLiHwDzilxAmSO9he5mHkJh9p1KfmmFGaVO9lfptRO0B/OwcgmMkWdri3LMFls6gQ22OOzueb+jaP63QHZL6kMQt5a69G8P7UPvrhSnUvGOIE1i+niyJAXcjouluObTMTL+I2Tzs7wb3UKJj4BCuxWS2gy85leZXAOHvIruSXAqbIbB1k13kqMeg8bq/jU+KtjePsmDhfUx8A4TEj+zdW9a1Hc2ZK6+hGNSRv3W62RylNG6g2P55bP5aYll/euIWiEnmsO9dT5Ja7qLMsaOKgJ5vqvIzjwmI6MVu8WE56+gNJyivc="
    # Generated using command "travis encrypt SONAR_LOGIN=blah"
-   #- secure: "WdxH3NpGCQ8oIUnr49KFDX1bK3T1ZPcRrgcjo13ekPjskN3AvjkviqX045iPzxw0He9OtbwrPIn27xYddGtb/Q4dAFV5zH5vdCMBuCToicJz8d1svXXjdKoWnrQLGVQ0hTLrWMQff7goN10LRzjuRQQj6u3K1mc21IlWaE3Rn0DNthebqNmPjIXvvCiAwNvaa8EVUiHzz02/wynpJPajeD/Uf2NxjQ4auIqrA5a7jVvJtYv2mJA/HhQBzanJdDxyXJsxlf7DPViBMWxmBpSpNlXiu3nNxkfCkJpiHcLmTIQTw8i8HwSmi9WnS2xyjFAt510HJpACufi5j58yXFRSIDeuxbwsn09LPFB4/L/Gx2laPSbsRe55jG1mQoD58wGTYPX5YusPyDTLM1Nw3rxbHdCd6cxrOkQ4FgotkasLqEa8HmhRu//PqB5M7MUkSLuP65yUHdHn4pdhKR+G9v1uDII5ZDyoidMjlRuL0Ty3PLJdQqyzvh2Wxwc7zECL0ZLeeYdBpAtZYw7S7nyMSituMYQDgsRmT3ISCNLQJor3vMwrtBXaxujS18cox+GsqedtH9hoUZm2Zwoq0MknsTmWOK8n+ey/EFg66tViI1Y24U3PfBT0ZHsviJRRqxpE2ULyVxJNXuesAkoFEsdAVDWjyqQ4E3PrNI8dYq9p2P/tWFQ="
+   - secure: "M/LXFGWoYHe8iaxHf2G3qzz2AB5VSK6sHz5NW1IlWsshQBWgx3e9Jr+bchT5iheFdAakDF3wN390XffW+SYHw0jNG48igy+OwWFsQKw33WUpNEkFaxrvtdcKke4WloOdJvlodozSLvpnjMirZwrc9qqIYJo3pnNvg1EfU+yxdt09QmW3bk3vzw4ypC4uVzsfbYnMtOYMd4IPz6yCpDD2g28+wLQ3mFF/DCOVuylv9G/Dlx4WtfzK2GiLWV/MMDrZ+safdfu+qxi2kdZCPXgNbtjLoKOWcuc+T+vsI1MEQawqfyaYJbLljyorCpqTmdQ4cSiXPCq70dYYypXDOswgMoWi3WWrbqGbper+WgIFaHz4PHrvjFzRAxnYyXyuFUQK8a9kbFFtNKCEW6RJZx3Blp9WdudQHqAFfMSlnyKVIPeQq7MgPVhbAVYxVTa0KePbeXOQnWzfuea3vf4HUk4njXGJEXBXutWScA9WlcKggsh6H70fz17+mt7IER9Ow3TJaqYW+Fu5nO+k0+EAEjVoVAuskvd2ITL+LM/I70SLyt4WJm6cV3tmgi+AcHF8IR83U8B/f5+J1m2K+gYkCgIIuAGUMa672bq2urhtJ9CJHd5HxMl8oGkhf4I1MdVMLikvVC8Nq4/yk56o+6g8omBIM3PqW/oH+jdEYaCYaFb14IM="
    # Generated using command "travis encrypt VERSIONEYE_API_KEY=blah"
    - secure: "PU2o0PU+oSfuw6BaluMno6uSXgf57Sgd4eimAQ15/1cSAePSWIS2Jpjr3in9tG0kAwhrGhWlZR/nI0o2oo6YEpjsYv3DTaW/AcAnC8AIAQeeDd/5YdZYWxX76ORORF6YuOGcNb7Cz0DkzQosWiRJFHt9/rUGKB9/uaIfh82H8WlfhfxH4BhB9659+XIDV0zF/jTSME2L8Sa/kPb2DuycCviqjS9CMWhCDCz8l7OZpPypvxt3Onk1e14UOpQ50W5+GLpRWiaILei2JuZaxYNs7Ut44MbYZZzkTYUHwFfSdQpK+8u6xbCOkOt/mJ3gASantIJKdWZ97dtwKzgJGKqjDjSvShL5kxj+I4nAe1rtaUv/eUz9/qAp7W6FWfAGVWO6TEqqpn3WAyy7LOYQrlYLgrumfgfZv2o3T+8oaiLJnHDmnVepboeL77aaTzAQskkUXUeFFGwFEn06veqgcP3oGfLuF1+yOIJApm5el4lkztwzu5iyCO9gQLYw9mVmAPq5grctpxpKGNfGuBEDp7oaWoZh3je5/FsT9mYbCkQiehHxuvEFSWMNUxHz+nSwrx1YY5pjvIRHb5+hIivWMAax7lxxDxSi26btlPJt9+xYo5bOxo0Ou6CaVVLbPsNwHhdmdU9NFP41Ov8lX1qRPcybxHO2Mv8QiCcPhEyoHe1x9y8="
 
