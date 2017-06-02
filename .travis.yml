@@ -43,7 +43,7 @@ env:
    #Required env for integration testing
    # Need to "gem install travis" first
    # Generated using command "travis encrypt COVERITY_SCAN_TOKEN=blah"
-   # - secure: "C4A49ZOQceU/ArLstDxMwn2XSZqvuZW+OA8ZGM0ktGN+yXEXymNYO2c5jgzwXkCzaGrnRTrFH509W1BO003SXkBsLRgC/kYupkPR4sSuWAm575IW8QCrBjWozU42aK4ZUfaFMsW1dQ99LTB6DeyjzWJCG0PKqfU+xjw0v+GJzMBEcj6Es0lHkCk8AjmbuKJkbq06WN/GP+0tVE+AavtGQoWNx34Za7BrY/6sUJkuwevIOc3IkjYN8JCZdKo8QPYDevzg2kBWhI2kX3prau+20uHQjsBqub1sYEuyQ3Ndxj+8ZzJP3M7j4QAcufJMjUxOfFnFLbmvXcj7N2zjVc6/c6z5MW3hoVY2WW+1WGUnoD3lK410SPe+W/eIlJqiYpn10dE7+rcSS4iWCVc8luGXXzgemK/yfgbPAnSWEeHJjKnHdUj6hX3He1Ef4sRjmfXlsd0NuKoshw1IH1mGezZ8yy2shKPmZAvbBaX77bebpd/gfOJE+6i2NbfFyicMJMpruHNbiQ2JQk0QRdFdV569wlmiBzLH/AneyIXWT3/VsMDNL1pAXIl8UCBa2HdQcidINMmHyYD2VDzhEsFrzWGP5EJK1WUo3tecJqor2BpnoWlOxVazZnF3MBAzYcM6ldv/jCYQWAyVSYq/oG/GcipXuwbq0sJHQs5/wIdyetDvFGU="
+   - secure: "aaTDaHAcwcPyzkXwUbY0eNwotoNtuV5BUSmaymYB8NK8n7bUfUKOIAr0LSx5ra9JHks99EAIF3UaEnk7Nr3NrCzXvGqOxFxGd9MqDpE4JdISfVdUn1S6E9PtDOcKs/RtxFjeZj1jYn3weFOyjtdDVep0H0bifKM6yQbdXY5pzFpdLEb0gTK9n4due16MLhB62Pw69PDdqSp3R/np+TAWQcLRucJts6JqMIyjJl4ydwymEJNupoKOgA+lg4K2c+xS/4/I4rF/M0VCcn9Ocq3WgsYuW48fyq16ZiMZRhw4IDMxYUFjpLNUj15v6ICkfLEof7DJ1OnnBRUdGCJ56D+ghleSGX0CT97UfbhXbLKxna4+zlktdF3Oe2ReD0yLiHwDzilxAmSO9he5mHkJh9p1KfmmFGaVO9lfptRO0B/OwcgmMkWdri3LMFls6gQ22OOzueb+jaP63QHZL6kMQt5a69G8P7UPvrhSnUvGOIE1i+niyJAXcjouluObTMTL+I2Tzs7wb3UKJj4BCuxWS2gy85leZXAOHvIruSXAqbIbB1k13kqMeg8bq/jU+KtjePsmDhfUx8A4TEj+zdW9a1Hc2ZK6+hGNSRv3W62RylNG6g2P55bP5aYll/euIWiEnmsO9dT5Ja7qLMsaOKgJ5vqvIzjwmI6MVu8WE56+gNJyivc="
    # Generated using command "travis encrypt SONAR_LOGIN=blah"
    #- secure: "WdxH3NpGCQ8oIUnr49KFDX1bK3T1ZPcRrgcjo13ekPjskN3AvjkviqX045iPzxw0He9OtbwrPIn27xYddGtb/Q4dAFV5zH5vdCMBuCToicJz8d1svXXjdKoWnrQLGVQ0hTLrWMQff7goN10LRzjuRQQj6u3K1mc21IlWaE3Rn0DNthebqNmPjIXvvCiAwNvaa8EVUiHzz02/wynpJPajeD/Uf2NxjQ4auIqrA5a7jVvJtYv2mJA/HhQBzanJdDxyXJsxlf7DPViBMWxmBpSpNlXiu3nNxkfCkJpiHcLmTIQTw8i8HwSmi9WnS2xyjFAt510HJpACufi5j58yXFRSIDeuxbwsn09LPFB4/L/Gx2laPSbsRe55jG1mQoD58wGTYPX5YusPyDTLM1Nw3rxbHdCd6cxrOkQ4FgotkasLqEa8HmhRu//PqB5M7MUkSLuP65yUHdHn4pdhKR+G9v1uDII5ZDyoidMjlRuL0Ty3PLJdQqyzvh2Wxwc7zECL0ZLeeYdBpAtZYw7S7nyMSituMYQDgsRmT3ISCNLQJor3vMwrtBXaxujS18cox+GsqedtH9hoUZm2Zwoq0MknsTmWOK8n+ey/EFg66tViI1Y24U3PfBT0ZHsviJRRqxpE2ULyVxJNXuesAkoFEsdAVDWjyqQ4E3PrNI8dYq9p2P/tWFQ="
    # Generated using command "travis encrypt VERSIONEYE_API_KEY=blah"
@@ -56,5 +56,5 @@ addons:
       description: "Build submitted via Travis CI"
     notification_email: dev-notify@symphony.foundation
     build_command_prepend: "mvn clean"
-    build_command:   "mvn -DskipTests=true compile install"
-    branch_pattern: $COVERITY_BRANCH_PATTERN
+    build_command:   "mvn -DskipTests=true install"
+    branch_pattern: master
