@@ -28,7 +28,7 @@ script:
 # Build for PRs
 - "if [[ \"$TRAVIS_PULL_REQUEST\" != \"false\" ]]; then mvn clean install && true ; fi"
 # Build for master branch
-- "if [[ $TRAVIS_BRANCH =~ master && \"$TRAVIS_PULL_REQUEST\" = \"false\" ]]; then mvn clean deploy --settings settings.xml ; fi"
+- "if [[ $TRAVIS_BRANCH =~ master && \"$TRAVIS_PULL_REQUEST\" = \"false\" ]]; then mvn clean deploy -Pversioneye --settings settings.xml ; fi"
 
 jdk:
   - oraclejdk8
@@ -38,16 +38,16 @@ notifications:
     recipients:
       - dev-notify@symphony.foundation
 
-#env:
-  #global:
+env:
+  global:
    #Required env for integration testing
    # Need to "gem install travis" first
    # Generated using command "travis encrypt COVERITY_SCAN_TOKEN=blah"
-  # - secure: "C4A49ZOQceU/ArLstDxMwn2XSZqvuZW+OA8ZGM0ktGN+yXEXymNYO2c5jgzwXkCzaGrnRTrFH509W1BO003SXkBsLRgC/kYupkPR4sSuWAm575IW8QCrBjWozU42aK4ZUfaFMsW1dQ99LTB6DeyjzWJCG0PKqfU+xjw0v+GJzMBEcj6Es0lHkCk8AjmbuKJkbq06WN/GP+0tVE+AavtGQoWNx34Za7BrY/6sUJkuwevIOc3IkjYN8JCZdKo8QPYDevzg2kBWhI2kX3prau+20uHQjsBqub1sYEuyQ3Ndxj+8ZzJP3M7j4QAcufJMjUxOfFnFLbmvXcj7N2zjVc6/c6z5MW3hoVY2WW+1WGUnoD3lK410SPe+W/eIlJqiYpn10dE7+rcSS4iWCVc8luGXXzgemK/yfgbPAnSWEeHJjKnHdUj6hX3He1Ef4sRjmfXlsd0NuKoshw1IH1mGezZ8yy2shKPmZAvbBaX77bebpd/gfOJE+6i2NbfFyicMJMpruHNbiQ2JQk0QRdFdV569wlmiBzLH/AneyIXWT3/VsMDNL1pAXIl8UCBa2HdQcidINMmHyYD2VDzhEsFrzWGP5EJK1WUo3tecJqor2BpnoWlOxVazZnF3MBAzYcM6ldv/jCYQWAyVSYq/oG/GcipXuwbq0sJHQs5/wIdyetDvFGU="
+   # - secure: "C4A49ZOQceU/ArLstDxMwn2XSZqvuZW+OA8ZGM0ktGN+yXEXymNYO2c5jgzwXkCzaGrnRTrFH509W1BO003SXkBsLRgC/kYupkPR4sSuWAm575IW8QCrBjWozU42aK4ZUfaFMsW1dQ99LTB6DeyjzWJCG0PKqfU+xjw0v+GJzMBEcj6Es0lHkCk8AjmbuKJkbq06WN/GP+0tVE+AavtGQoWNx34Za7BrY/6sUJkuwevIOc3IkjYN8JCZdKo8QPYDevzg2kBWhI2kX3prau+20uHQjsBqub1sYEuyQ3Ndxj+8ZzJP3M7j4QAcufJMjUxOfFnFLbmvXcj7N2zjVc6/c6z5MW3hoVY2WW+1WGUnoD3lK410SPe+W/eIlJqiYpn10dE7+rcSS4iWCVc8luGXXzgemK/yfgbPAnSWEeHJjKnHdUj6hX3He1Ef4sRjmfXlsd0NuKoshw1IH1mGezZ8yy2shKPmZAvbBaX77bebpd/gfOJE+6i2NbfFyicMJMpruHNbiQ2JQk0QRdFdV569wlmiBzLH/AneyIXWT3/VsMDNL1pAXIl8UCBa2HdQcidINMmHyYD2VDzhEsFrzWGP5EJK1WUo3tecJqor2BpnoWlOxVazZnF3MBAzYcM6ldv/jCYQWAyVSYq/oG/GcipXuwbq0sJHQs5/wIdyetDvFGU="
    # Generated using command "travis encrypt SONAR_LOGIN=blah"
    #- secure: "WdxH3NpGCQ8oIUnr49KFDX1bK3T1ZPcRrgcjo13ekPjskN3AvjkviqX045iPzxw0He9OtbwrPIn27xYddGtb/Q4dAFV5zH5vdCMBuCToicJz8d1svXXjdKoWnrQLGVQ0hTLrWMQff7goN10LRzjuRQQj6u3K1mc21IlWaE3Rn0DNthebqNmPjIXvvCiAwNvaa8EVUiHzz02/wynpJPajeD/Uf2NxjQ4auIqrA5a7jVvJtYv2mJA/HhQBzanJdDxyXJsxlf7DPViBMWxmBpSpNlXiu3nNxkfCkJpiHcLmTIQTw8i8HwSmi9WnS2xyjFAt510HJpACufi5j58yXFRSIDeuxbwsn09LPFB4/L/Gx2laPSbsRe55jG1mQoD58wGTYPX5YusPyDTLM1Nw3rxbHdCd6cxrOkQ4FgotkasLqEa8HmhRu//PqB5M7MUkSLuP65yUHdHn4pdhKR+G9v1uDII5ZDyoidMjlRuL0Ty3PLJdQqyzvh2Wxwc7zECL0ZLeeYdBpAtZYw7S7nyMSituMYQDgsRmT3ISCNLQJor3vMwrtBXaxujS18cox+GsqedtH9hoUZm2Zwoq0MknsTmWOK8n+ey/EFg66tViI1Y24U3PfBT0ZHsviJRRqxpE2ULyVxJNXuesAkoFEsdAVDWjyqQ4E3PrNI8dYq9p2P/tWFQ="
    # Generated using command "travis encrypt VERSIONEYE_API_KEY=blah"
-  # - secure: "PQa140WousHjTIpK7gkUT0a1ewTkvZ4lj72ypqi5dZ34tib3JVpqpqGgu5IF7B1pgo43hhbOt33k8UdGTsGQdOc++b7MaVWGKQmCTNXozeo8XKJmDybWHewEebbkmQkImEvpQFBTB96VPhSwVin1h+cQr8dk2qVio4ljpPQhLGhtY2iukDjrwndkDNza8q/H4jRCcgqIExJqaM8bqh9hhMoxI7fFURRFasJx3/vuL4wWkC+rl5sWS1JK8msyjLr6CM7lwmMKeA5Di5iViO0k5NifOgAe6Kty0WGQZoTXY0QZUzHDfIxiUmARG5hOEj6/bbnJEo7ylOtkQMP2QRI2CV+4iHClkSmMXv7beQkTkhAu+9/5lILf+na81FFE5lbih3kqokdUM532jfY+Ltt6GofRWNw8A76qprDTjcpnOx22+YFStU0BqTHvCfokjJdDg4AdlzvqHx/YMhvlywVWqwzC8Pi6dqfrtnQdW+PBQN2ytdHAwCT9LwDONAQSg3G+5FJshir9Abz2JhH7QiD1YvU+br+2hJeMaR8M7pxzA1bvHEq08zKxyhKOrnJmznwSLXG/Avih99qNtUBCzgIpDUj3duX/Ml8xnYY42dPQUwtEFrpkxQSRxLunM91BTkMxwb0vX6G18TA93kwbKMvYLh6tIFtRC6niO1sz5j7L5S0="
+   - secure: "PU2o0PU+oSfuw6BaluMno6uSXgf57Sgd4eimAQ15/1cSAePSWIS2Jpjr3in9tG0kAwhrGhWlZR/nI0o2oo6YEpjsYv3DTaW/AcAnC8AIAQeeDd/5YdZYWxX76ORORF6YuOGcNb7Cz0DkzQosWiRJFHt9/rUGKB9/uaIfh82H8WlfhfxH4BhB9659+XIDV0zF/jTSME2L8Sa/kPb2DuycCviqjS9CMWhCDCz8l7OZpPypvxt3Onk1e14UOpQ50W5+GLpRWiaILei2JuZaxYNs7Ut44MbYZZzkTYUHwFfSdQpK+8u6xbCOkOt/mJ3gASantIJKdWZ97dtwKzgJGKqjDjSvShL5kxj+I4nAe1rtaUv/eUz9/qAp7W6FWfAGVWO6TEqqpn3WAyy7LOYQrlYLgrumfgfZv2o3T+8oaiLJnHDmnVepboeL77aaTzAQskkUXUeFFGwFEn06veqgcP3oGfLuF1+yOIJApm5el4lkztwzu5iyCO9gQLYw9mVmAPq5grctpxpKGNfGuBEDp7oaWoZh3je5/FsT9mYbCkQiehHxuvEFSWMNUxHz+nSwrx1YY5pjvIRHb5+hIivWMAax7lxxDxSi26btlPJt9+xYo5bOxo0Ou6CaVVLbPsNwHhdmdU9NFP41Ov8lX1qRPcybxHO2Mv8QiCcPhEyoHe1x9y8="
 
 addons:
   coverity_scan:
