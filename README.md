@@ -9,7 +9,7 @@ Symphony Java API
 
 (Generated Code)
 
-Implements REST API 1.45
+Implements REST API 1.46
 
 
 ##Requirements
