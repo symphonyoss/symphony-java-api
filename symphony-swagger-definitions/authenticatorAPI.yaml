@@ -108,6 +108,10 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
+#
+# Deprecated paths
+#
+
 definitions:
   Error:
     type: object
@@ -162,4 +166,8 @@ definitions:
       certificate:
         description: Certificate in PEM format
         type: string
+
+#
+# Deprecated definitions
+#
 

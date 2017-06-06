@@ -3070,6 +3070,471 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
+#
+# Deprecated paths
+#
+  '/v1/sessioninfo':
+    get:
+      summary: Get information about the current user's session.
+      produces:
+        - application/json
+      parameters:
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+      tags:
+        - Session
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SessionInfo'
+        '400':
+          description: 'Client error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized: Session tokens invalid.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden: Caller lacks necessary entitlement.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+  '/v1/companycert/create':
+    post:
+      deprecated: true
+      summary: Create a company trusted or untrusted certificate
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+        - name: cert
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/CompanyCert'
+      tags:
+        - Security
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SuccessResponse'
+        '400':
+          description: 'Client error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized: Session tokens invalid.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden: Caller lacks necessary entitlement.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+  '/v1/user':
+    get:
+      summary: Get user information by email address.
+      produces:
+        - application/json
+      parameters:
+        - name: email
+          description: Email address
+          in: query
+          required: true
+          type: string
+          format: email
+        - name: local
+          description: |
+            If true then a local DB search will be performed and only local pod users will be
+            returned. If absent or false then a directory search will be performed and users
+            from other pods who are visible to the calling user will also be returned.
+          in: query
+          required: false
+          type: boolean
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+      tags:
+        - Users
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+        '204':
+          description: 'No user found.'
+        '400':
+          description: 'Client error.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized: Session tokens invalid.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden: Caller lacks necessary entitlement.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+  '/v1/user/{uid}/presence':
+    get:
+      deprecated: true
+      summary: Get presence information about a particular user.
+      produces:
+        - application/json
+      parameters:
+        - name: uid
+          description: |
+            User ID as a decimal integer
+          in: path
+          required: true
+          type: integer
+          format: int64
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+      tags:
+        - Presence
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Presence'
+          headers:
+            X-Warning:
+              description: This method is deprecated
+              type: string
+        '400':
+          description: 'Client error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized: Session tokens invalid.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden: Caller lacks necessary entitlement.'
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: 'Not Found: user id cannot be located.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      deprecated: true
+      summary: LIMITED RELEASE Set presence information for a particular user.
+      description: |
+        Only the following states can be set
+        AVAILABLE
+        BUSY
+        ON_THE_PHONE
+        AWAY
+
+        Attempts to set other states will result in a 403 FORBIDDEN response.
+
+        The UNDEFINED value is an error case used to represent the case if the value stored in the
+        system cannot be represented by the values known to the API.
+
+        The other states are reserved for future use.
+      produces:
+        - application/json
+      parameters:
+        - name: uid
+          description: |
+            User ID as a decimal integer
+          in: path
+          required: true
+          type: integer
+          format: int64
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+        - name: presence
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Presence'
+      tags:
+        - Presence
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Presence'
+          headers:
+            X-Warning:
+              description: This method is deprecated
+              type: string
+        '400':
+          description: 'Client error.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden.'
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: 'Not Found: user id cannot be located.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+  '/v1/room/create':
+      post:
+        deprecated: true
+        summary: Create a new chatroom.
+        description: |
+          Create a new chatroom.
+
+          If no attributes are specified, the room is created as a private chatroom.
+        consumes:
+          - application/json
+        produces:
+          - application/json
+        parameters:
+          - name: payload
+            in: body
+            required: true
+            schema:
+              $ref: '#/definitions/RoomCreate'
+          - name: sessionToken
+            description: Session authentication token.
+            in: header
+            required: true
+            type: string
+        tags:
+          - Streams
+        responses:
+          '200':
+            description: OK
+            schema:
+              $ref: '#/definitions/RoomDetail'
+          '400':
+            description: 'Client error.'
+            schema:
+              $ref: '#/definitions/Error'
+          '401':
+            description: 'Unauthorized: Session tokens invalid.'
+            schema:
+              $ref: '#/definitions/Error'
+          '403':
+            description: 'Forbidden: Caller lacks necessary entitlement.'
+            schema:
+              $ref: '#/definitions/Error'
+          '500':
+            description: 'Server error, see response body for further details.'
+            schema:
+              $ref: '#/definitions/Error'
+  '/v1/room/{id}/info':
+    get:
+      deprecated: true
+      summary: Get information about a partcular chatroom.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          description: Room streamId
+          in: path
+          required: true
+          type: string
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+      tags:
+        - Streams
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/RoomDetail'
+        '400':
+          description: 'Client error.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized: Session tokens invalid.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden: Caller lacks necessary entitlement.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+  '/v1/room/{id}/update':
+    post:
+      deprecated: true
+      summary: Update the attributes of an existing chatroom.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          description: Room streamId
+          in: path
+          required: true
+          type: string
+        - name: payload
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RoomAttributes'
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+      tags:
+        - Streams
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/RoomDetail'
+        '400':
+          description: 'Client error.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized: Session tokens invalid.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden: Caller lacks necessary entitlement.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+  '/v1/room/{id}/membership/list':
+    get:
+      deprecated: true
+      summary: Lists the members of an existing room.
+      description: |
+        Lists the members of an existing room. If the requesting user is an administrator, lists current
+        and previous members. If the requesting user is a regular user, lists only current members.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          description: Room streamId
+          in: path
+          required: true
+          type: string
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+      tags:
+        - Room Membership
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/MembershipList'
+        '400':
+          description: 'Client error.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized: Session tokens invalid.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden: Caller lacks necessary entitlement.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+  '/v1/user/name/{userName}/get':
+    get:
+      deprecated: true
+      summary: Get user information by user (login) name.
+      description: |
+        Searches for a user in the local pod with the given user name.
+      produces:
+        - application/json
+      parameters:
+        - name: userName
+          description: User login name
+          in: path
+          required: true
+          type: string
+        - name: sessionToken
+          description: Session authentication token.
+          in: header
+          required: true
+          type: string
+      tags:
+        - Users
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+        '204':
+          description: 'No user found.'
+        '400':
+          description: 'Client error.'
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: 'Unauthorized: Session tokens invalid.'
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: 'Forbidden: Caller lacks necessary entitlement.'
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: 'Server error, see response body for further details.'
+          schema:
+            $ref: '#/definitions/Error'
+
 definitions:
   Error:
     type: object
@@ -4272,4 +4737,30 @@ definitions:
       justification:
         description: The reason for the requested action.
         type: string
+
+  SessionInfo:
+    description: Information about the current user's session
+    type: object
+    properties:
+      userId:
+        type: integer
+        format: int64
+  RoomCreate:
+    description: Room Creation Object. Once the chatroom is created, modify attributes and deactive/reactivate via the specific API calls.
+    type: object
+    properties:
+      roomAttributes:
+        $ref: '#/definitions/RoomAttributes'
+      immutableRoomAttributes:
+        $ref: '#/definitions/ImmutableRoomAttributes'
+  User:
+    description: User record.
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      emailAddress:
+        type: string
+        format: email
 
