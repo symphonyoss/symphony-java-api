@@ -29,8 +29,7 @@ import org.symphonyoss.symphony.agent.invoker.ApiException;
 import org.symphonyoss.symphony.agent.invoker.Configuration;
 import org.symphonyoss.symphony.agent.invoker.Pair;
 import org.symphonyoss.symphony.agent.model.Firehose;
-import org.symphonyoss.symphony.agent.model.MessageList;
-import org.symphonyoss.symphony.agent.model.V2MessageList;
+import org.symphonyoss.symphony.agent.model.V4MessageList;
 
 import javax.ws.rs.core.GenericType;
 import java.util.ArrayList;
@@ -123,10 +122,10 @@ public class FirehoseApi {
    * @param sessionToken Session authentication token. (required)
    * @param keyManagerToken Key Manager authentication token. (required)
    * @param maxMessages Max No. of messages to return.\n (optional)
-   * @return MessageList
+   * @return V4MessageList
    * @throws ApiException if fails to make API call
    */
-  public MessageList v1FirehoseIdReadGet(String id, String sessionToken, String keyManagerToken, Integer maxMessages) throws ApiException {
+  public V4MessageList v1FirehoseIdReadGet(String id, String sessionToken, String keyManagerToken, Integer maxMessages) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
@@ -178,7 +177,7 @@ public class FirehoseApi {
     String[] localVarAuthNames = new String[] {  };
 
     
-    GenericType<MessageList> localVarReturnType = new GenericType<MessageList>() {};
+    GenericType<V4MessageList> localVarReturnType = new GenericType<V4MessageList>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     
   }
@@ -190,10 +189,10 @@ public class FirehoseApi {
    * @param sessionToken Session authentication token. (required)
    * @param keyManagerToken Key Manager authentication token. (required)
    * @param maxMessages Max No. of messages to return.\n (optional)
-   * @return V2MessageList
+   * @return V4MessageList
    * @throws ApiException if fails to make API call
    */
-  public V2MessageList v2FirehoseIdReadGet(String id, String sessionToken, String keyManagerToken, Integer maxMessages) throws ApiException {
+  public V4MessageList v2FirehoseIdReadGet(String id, String sessionToken, String keyManagerToken, Integer maxMessages) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'id' is set
@@ -245,7 +244,7 @@ public class FirehoseApi {
     String[] localVarAuthNames = new String[] {  };
 
     
-    GenericType<V2MessageList> localVarReturnType = new GenericType<V2MessageList>() {};
+    GenericType<V4MessageList> localVarReturnType = new GenericType<V4MessageList>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
     
   }
