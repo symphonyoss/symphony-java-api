@@ -20,12 +20,11 @@
   ~ under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.symphonyoss.symphony</groupId>
     <artifactId>symphony-java-api</artifactId>
-    <version>1.46.0-SNAPSHOT</version>
+    <version>1.46.0</version>
     <packaging>pom</packaging>
     <name>Symphony Apis</name>
     <url>https://github.com/symphonyoss/symphony-java-api</url>
@@ -48,18 +47,18 @@
         <connection>scm:git:git://github.com/symphonyoss/symphony-java-api.git</connection>
         <developerConnection>scm:git:git@github.com:symphonyoss/symphony-java-api.git</developerConnection>
         <url>https://github.com/symphonyoss/symphony-java-api</url>
-        <tag>HEAD</tag>
+        <tag>symphony-java-api-1.46.0</tag>
     </scm>
 
     <developers>
         <developer>
             <id>ftarsillo</id>
             <name>Frank Tarsillo</name>
-            <email/>
+            <email />
             <url>http://github.com/ftarsillo</url>
             <organization>Symphony Software Foundation</organization>
             <organizationUrl>http://symphony.foundation</organizationUrl>
-            <timezone/>
+            <timezone />
             <roles>
                 <role>Architect</role>
                 <role>Developer</role>
@@ -80,11 +79,11 @@
         <developer>
             <id>jonfreedman</id>
             <name>Jon Freedman</name>
-            <email/>
+            <email />
             <url>http://github.com/jonfreedman</url>
             <organization>Symphony Software Foundation</organization>
             <organizationUrl>http://symphony.foundation</organizationUrl>
-            <timezone/>
+            <timezone />
             <roles>
                 <role>Developer</role>
             </roles>
