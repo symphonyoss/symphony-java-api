@@ -24,7 +24,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.symphonyoss.symphony</groupId>
     <artifactId>symphony-java-api</artifactId>
-    <version>1.46.1-SNAPSHOT</version>
+    <version>1.47.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Symphony Apis</name>
     <url>https://github.com/symphonyoss/symphony-java-api</url>
