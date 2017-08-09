@@ -7,48 +7,40 @@
 Symphony Java API
 ====================
 
-(Generated Code)
+This project generates (swagger-gen) java client language binding(s) based on the Symphony LLC REST API specification.  Currently only the Jersey2 client implementation is generated, but this can be easily modified to support other variants. 
 
-Implements REST API 1.46
+The generation will produce libraries for the three core REST API modules agent, authentication and pod.
 
+Versioning of these bindings align with the Symphony LLC REST API versions.
 
-##Requirements
-
-####POM:
-
-        <dependency>
-            <groupId>org.symphonyoss.symphony</groupId>
-            <artifactId>symphony-java-api</artifactId>
-            <version>(Version)</version>
-        </dependency>
-
-####Certificates:
-
-        Please contact your Symphony local administrator to obtain the necessary certificates
-        for the user/service account being used to access the POD.
-
-        Server Truststore = Contains server certs
-        User Keystore = Symphony user client certificate
-
-        Note: The latest version of the SymphonyClient object supports the ability to create custom HTTP Clients, which
-        means you can bind different .p12 certs representing different BOT users.
+Current releases include 1.45.0, 1.46.0 and 1.47.0-SNAPSHOT.  Javadoc is included in all maven distributions.
 
 
-####Required System Properties:
 
-        -Dkeystore.password=(Pass)
-        -Dtruststore.password=(Pass)
-        -Dsessionauth.url=https://(pod-host).symphony.com:8444/sessionauth
-        //Note: you may have local HSM vs pod
-        -Dkeyauth.url=https://(pod-host).symphony.com:8444/keyauth
-        -Dsymphony.agent.pod.url=https://(symagent-host).mdevlab.com:8446/pod
-        -Dsymphony.agent.agent.url=https://(symagent-host).mdevlab.com:8446/agent
-        -Dcerts.dir=/dev/certs/
-        -Dtruststore.file=/dev/certs/server.truststore
-        -Dbot.user=(user name)
 
-##Examples
-[see Examples Project](https://github.com/symphonyoss/symphony-java-sample-bots)
+
+
+###POM for Jersey2 Bindings:
+
+           <dependency>
+                   <groupId>org.symphonyoss.symphony</groupId>
+                   <artifactId>symphony-authenticator-java-jersey2-client</artifactId>
+                   <version>${symphony-api-version}</version>
+           </dependency>
+           <dependency>
+                   <groupId>org.symphonyoss.symphony</groupId>
+                   <artifactId>symphony-agent-java-jersey2-client</artifactId>
+                   <version>${symphony-api-version}</version>
+           </dependency>
+           <dependency>
+                   <groupId>org.symphonyoss.symphony</groupId>
+                   <artifactId>symphony-pod-java-jersey2-client</artifactId>
+                   <version>${symphony-api-version}</version>
+           </dependency>
+
+###Branch Strategy:
+
+Branch strategy aligns with spec versioning and merged into master for released version.  example branch format: 1_46, 1_47..etc
 
 
 ##API Docs
