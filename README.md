@@ -43,7 +43,7 @@ Current releases include 1.45.0, 1.46.0 and 1.47.0-SNAPSHOT.  Javadoc is include
 Branch strategy aligns with spec versioning and merged into master for released version.  example branch format: 1_46, 1_47..etc
 
 
-##API Docs
+## API Docs
 [API Documentation](http://symphonyoss.github.io/symphony-java-api/index.html)
 
 ## Contribute
