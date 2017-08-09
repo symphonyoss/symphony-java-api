@@ -20,7 +20,7 @@ Current releases include 1.45.0, 1.46.0 and 1.47.0-SNAPSHOT.  Javadoc is include
 
 
 
-###POM for Jersey2 Bindings:
+### POM for Jersey2 Bindings:
 
            <dependency>
                    <groupId>org.symphonyoss.symphony</groupId>
@@ -38,7 +38,7 @@ Current releases include 1.45.0, 1.46.0 and 1.47.0-SNAPSHOT.  Javadoc is include
                    <version>${symphony-api-version}</version>
            </dependency>
 
-###Branch Strategy:
+### Branch Strategy:
 
 Branch strategy aligns with spec versioning and merged into master for released version.  example branch format: 1_46, 1_47..etc
 
