@@ -20,8 +20,7 @@
   ~ under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.symphonyoss.symphony</groupId>
     <artifactId>symphony-java-api</artifactId>
@@ -55,11 +54,11 @@
         <developer>
             <id>ftarsillo</id>
             <name>Frank Tarsillo</name>
-            <email/>
+            <email />
             <url>http://github.com/ftarsillo</url>
             <organization>Symphony Software Foundation</organization>
             <organizationUrl>http://symphony.foundation</organizationUrl>
-            <timezone/>
+            <timezone />
             <roles>
                 <role>Architect</role>
                 <role>Developer</role>
@@ -80,11 +79,11 @@
         <developer>
             <id>jonfreedman</id>
             <name>Jon Freedman</name>
-            <email/>
+            <email />
             <url>http://github.com/jonfreedman</url>
             <organization>Symphony Software Foundation</organization>
             <organizationUrl>http://symphony.foundation</organizationUrl>
-            <timezone/>
+            <timezone />
             <roles>
                 <role>Developer</role>
             </roles>
@@ -94,6 +93,7 @@
     <properties>
         <jersey.version>2.23.1</jersey.version>
         <jackson.version>2.8.4</jackson.version>
+        <javassist.version>3.21.0-GA</javassist.version>
         <sonar.skip>false</sonar.skip>
     </properties>
 
@@ -138,7 +138,7 @@
             <dependency>
                 <groupId>org.javassist</groupId>
                 <artifactId>javassist</artifactId>
-                <version>3.21.0-GA</version>
+                <version>${javassist.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
