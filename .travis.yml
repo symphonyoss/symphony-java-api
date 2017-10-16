@@ -28,7 +28,7 @@ script:
 # Build for PRs
 - "if [[ \"$TRAVIS_PULL_REQUEST\" != \"false\" ]]; then mvn clean install && true ; fi"
 # Build for master branch
-- "if [[ $TRAVIS_BRANCH =~ master && \"$TRAVIS_PULL_REQUEST\" = \"false\" ]]; then mvn clean deploy -Pversioneye,sonar --settings settings.xml ; fi"
+- "if [[ $TRAVIS_BRANCH =~ master && \"$TRAVIS_PULL_REQUEST\" = \"false\" ]]; then mvn clean deploy -Pversioneye,sonar,whitesource --settings settings.xml ; fi"
 
 jdk:
   - oraclejdk8
