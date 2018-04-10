@@ -24,7 +24,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.symphonyoss.symphony</groupId>
     <artifactId>symphony-java-api</artifactId>
-    <version>1.50.2-SNAPSHOT</version>
+    <version>1.51.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Symphony Apis</name>
     <url>https://github.com/symphonyoss/symphony-java-api</url>
@@ -223,7 +223,7 @@
                 <plugin>
                     <groupId>io.swagger</groupId>
                     <artifactId>swagger-codegen-maven-plugin</artifactId>
-                    <version>2.2.3</version>
+                    <version>2.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -239,8 +239,11 @@
     </build>
 
     <modules>
+
+        <module>pod</module>
+        <module>login</module>
         <module>agent</module>
         <module>authenticator</module>
-        <module>pod</module>
+
     </modules>
 </project>

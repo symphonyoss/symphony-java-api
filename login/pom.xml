@@ -22,8 +22,8 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>symphony-authenticator-java-jersey2-client</artifactId>
-    <name>Symphony Authenticator Java Api</name>
+    <artifactId>symphony-login-java-jersey2-client</artifactId>
+    <name>Symphony Login Java Api</name>
 
     <parent>
         <groupId>org.symphonyoss.symphony</groupId>
@@ -89,11 +89,11 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/../symphony-swagger-definitions/authenticatorAPI.yaml
+                            <inputSpec>${project.basedir}/../symphony-swagger-definitions/loginAPI.yaml
                             </inputSpec>
-                            <apiPackage>org.symphonyoss.symphony.authenticator.api</apiPackage>
-                            <modelPackage>org.symphonyoss.symphony.authenticator.model</modelPackage>
-                            <invokerPackage>org.symphonyoss.symphony.authenticator.invoker</invokerPackage>
+                            <apiPackage>org.symphonyoss.symphony.login.api</apiPackage>
+                            <modelPackage>org.symphonyoss.symphony.login.model</modelPackage>
+                            <invokerPackage>org.symphonyoss.symphony.login.invoker</invokerPackage>
                             <language>java</language>
                             <library>jersey2</library>
                             <configOptions>
